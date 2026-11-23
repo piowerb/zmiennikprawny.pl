@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ZmiennikPrawny – nowe ustawy z Dziennika Ustaw na bieżąco</title>
+<meta name="description" content="ZmiennikPrawny pokazuje nowe ustawy, rozporządzenia i obwieszczenia z Dziennika Ustaw RP zaraz po publikacji. Wyszukiwanie, filtry i PDF jednym kliknięciem. Za darmo, bez rejestracji.">
+<link rel="canonical" href="https://zmiennikprawny.pl/">
+<meta name="theme-color" content="#005130">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:url" content="https://zmiennikprawny.pl/">
+<meta property="og:title" content="ZmiennikPrawny – Dziennik Ustaw na bieżąco">
+<meta property="og:description" content="Nowe ustawy i rozporządzenia zaraz po publikacji. Czytelnie i za darmo.">
+<meta property="og:image" content="https://zmiennikprawny.pl/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebSite","@id":"https://zmiennikprawny.pl/#website","url":"https://zmiennikprawny.pl/","name":"ZmiennikPrawny","inLanguage":"pl-PL"},
+{"@type":"WebApplication","name":"ZmiennikPrawny","url":"https://zmiennikprawny.vercel.app/","applicationCategory":"ReferenceApplication","operatingSystem":"Web, iOS, Android","inLanguage":"pl-PL","description":"Aplikacja do monitorowania nowych aktów prawnych z Dziennika Ustaw RP w czasie rzeczywistym, na podstawie oficjalnego API Sejmu RP (ELI).","offers":{"@type":"Offer","price":"0","priceCurrency":"PLN"},"author":{"@type":"Person","name":"piowerb","url":"https://github.com/piowerb"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Czy ZmiennikPrawny to oficjalny serwis?","acceptedAnswer":{"@type":"Answer","text":"Nie. To niezależna aplikacja. Dane pochodzą z oficjalnego API Sejmu RP (ELI), ale wiążący jest wyłącznie tekst opublikowany w Dzienniku Ustaw."}},
+{"@type":"Question","name":"Ile to kosztuje?","acceptedAnswer":{"@type":"Answer","text":"Aplikacja jest darmowa i nie wymaga zakładania konta."}},
+{"@type":"Question","name":"Jak zainstalować aplikację na iPhonie?","acceptedAnswer":{"@type":"Answer","text":"Otwórz aplikację w Safari, stuknij Udostępnij, a potem Do ekranu początkowego."}}
+]}
+]}
+</script>
+<style>
+:root{
+  --green:#005130; --green-hover:#003d24; --mint:#e6f4ed; --mint-2:#cfe9dc;
+  --paper:#fbfaf7; --white:#ffffff; --ink:#0f1a14; --muted:#5b6660; --line:#e4e2dc;
+  --serif:"Iowan Old Style","Charter","Palatino Linotype","Book Antiqua",Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --radius:18px; --max:1120px;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.serif{font-family:var(--serif)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;transition:background .15s,border-color .15s,transform .15s}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:var(--green-hover)}
+.btn-ghost{border:1px solid var(--line);background:var(--white);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--green);color:var(--green)}
+.btn svg{width:18px;height:18px}
+:focus-visible{outline:3px solid #7fc7a4;outline-offset:2px;border-radius:8px}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;font-size:19px;letter-spacing:-.01em}
+.brand img{width:38px;height:38px;border-radius:11px}
+.nav-links{display:flex;align-items:center;gap:28px;font-size:15px;color:var(--muted)}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{color:var(--green)}
+.nav .btn{min-height:42px;padding:0 18px;font-size:15px}
+.nav .btn{white-space:nowrap}
+@media (max-width:430px){.nav .btn{padding:0 14px;font-size:14px;min-height:40px}.nav .brand{font-size:17px;gap:9px}.nav .brand img{width:34px;height:34px}}
+@media (max-width:370px){.nav .brand{font-size:15.5px}.nav .btn{padding:0 12px}}
+@media (max-width:820px){.nav-links a:not(.btn){display:none}}
+
+/* hero */
+.hero{padding:72px 0 64px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--green);background:var(--mint);padding:7px 14px;border-radius:999px;margin-bottom:22px}
+.kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(0,81,48,.15);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(0,81,48,.05)}}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,6vw,64px);line-height:1.04;letter-spacing:-.02em;margin-bottom:22px}
+h1 em{font-style:italic;color:var(--green)}
+.lead{font-size:19px;color:var(--muted);max-width:34em;margin-bottom:30px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.trust{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14px;color:var(--muted);list-style:none}
+.trust li{display:flex;align-items:center;gap:7px}
+.trust svg{width:16px;height:16px;color:var(--green);flex:none}
+
+/* app mock */
+.mock{background:var(--white);border:1px solid var(--line);border-radius:24px;box-shadow:0 1px 0 rgba(0,0,0,.02),0 30px 60px -30px rgba(0,81,48,.35),0 18px 36px -18px rgba(15,26,20,.18);overflow:hidden}
+.mock-top{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line)}
+.mock-top .b{display:flex;align-items:center;gap:10px;font-weight:700}
+.mock-top img{width:30px;height:30px;border-radius:9px}
+.mock-top .live{font-size:12px;font-weight:600;color:var(--green);display:flex;align-items:center;gap:6px}
+.mock-top .live .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+.mock-search{padding:14px 18px 12px;border-bottom:1px solid var(--line)}
+.mock-input{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:12px;padding:10px 12px;color:#9aa39e;font-size:15px}
+.mock-input svg{width:16px;height:16px}
+.chips{display:flex;gap:8px;margin-top:10px;overflow:hidden}
+.chip{font-size:13px;padding:6px 12px;border-radius:999px;background:#f1f1ee;white-space:nowrap}
+.chip.on{background:var(--green);color:#fff}
+.acts{list-style:none}
+.act{padding:14px 18px;border-bottom:1px solid var(--line)}
+.act:last-child{border-bottom:0}
+.badge{display:inline-block;font-size:11.5px;font-weight:600;color:var(--green);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:5px}
+.act h3{font-size:14.5px;font-weight:600;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.act p{font-size:13px;color:var(--muted);margin-top:5px}
+.act p b{color:#36413b;font-weight:600}
+.mock-foot{font-size:12px;color:#8a938e;padding:10px 18px;background:#fafaf8;border-top:1px solid var(--line)}
+
+/* sections */
+section{padding:84px 0}
+.sec-head{max-width:640px;margin-bottom:44px}
+.para{font-family:var(--serif);color:var(--green);font-size:18px;font-weight:700;margin-bottom:10px;letter-spacing:.01em}
+h2{font-family:var(--serif);font-size:clamp(30px,4vw,42px);line-height:1.12;letter-spacing:-.015em;margin-bottom:14px}
+.sec-head p{color:var(--muted);font-size:18px}
+.band{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.band .feature{background:var(--paper)}
+.ic{width:44px;height:44px;border-radius:12px;background:var(--mint);color:var(--green);display:grid;place-items:center;margin-bottom:16px}
+.ic svg{width:22px;height:22px}
+.feature h3{font-size:18px;margin-bottom:6px}
+.feature p{color:var(--muted);font-size:15.5px}
+.hl{background:var(--mint);color:var(--green);border-radius:3px;padding:0 2px}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+.step{position:relative;padding:28px 26px;border-radius:var(--radius);background:var(--white);border:1px solid var(--line)}
+.step::before{counter-increment:s;content:counter(s);font-family:var(--serif);font-weight:700;font-size:40px;color:var(--mint-2);line-height:1;display:block;margin-bottom:12px}
+.step h3{font-size:18px;margin-bottom:6px}
+.step p{color:var(--muted);font-size:15.5px}
+
+.audience{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.aud{padding:24px;border-radius:var(--radius);border:1px solid var(--line);background:var(--paper)}
+.aud h3{font-size:17px;margin-bottom:6px}
+.aud p{color:var(--muted);font-size:15px}
+
+.soon{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.soon .feature{position:relative}
+.tag{position:absolute;top:22px;right:22px;font-size:12px;font-weight:600;color:#7a5b00;background:#fff4d6;border-radius:999px;padding:3px 10px}
+
+.faq{max-width:760px}
+details{border-bottom:1px solid var(--line);padding:6px 0}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px;font-weight:600;font-size:17px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:26px;font-weight:400;color:var(--green);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);padding:0 0 18px;max-width:640px}
+
+.final{text-align:center;padding:90px 0}
+.final-card{background:var(--green);color:#fff;border-radius:28px;padding:64px 24px;position:relative;overflow:hidden}
+.final-card::before{content:"§";position:absolute;right:-20px;bottom:-110px;font-family:var(--serif);font-size:380px;line-height:1;color:rgba(255,255,255,.06)}
+.final-card h2{color:#fff;max-width:640px;margin:0 auto 14px}
+.final-card p{color:rgba(255,255,255,.8);font-size:18px;max-width:520px;margin:0 auto 28px}
+.final-card .btn-primary{background:#fff;color:var(--green)}
+.final-card .btn-primary:hover{background:var(--mint)}
+
+footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area-inset-bottom));font-size:14px;color:var(--muted)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center;margin-bottom:18px}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--green)}
+.foot-links{display:flex;gap:20px;flex-wrap:wrap}
+.disclaimer{font-size:13px;color:#7f8883;max-width:760px}
+
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .features,.soon{grid-template-columns:1fr 1fr}
+  .audience{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .hero{padding:44px 0 48px}
+  section{padding:60px 0}
+  .features,.steps,.audience,.soon{grid-template-columns:1fr}
+  .lead{font-size:17px}
+  .cta-row .btn{flex:1 1 100%}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="ZmiennikPrawny – strona główna">
+      <img src="logo.png" alt="" width="38" height="38">ZmiennikPrawny
+    </a>
+    <nav class="nav-links" aria-label="Główna nawigacja">
+      <a href="#funkcje">Funkcje</a>
+      <a href="#jak-to-dziala">Jak to działa</a>
+      <a href="#dla-kogo">Dla kogo</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-primary" href="https://zmiennikprawny.vercel.app/">Otwórz aplikację</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker"><span class="dot"></span>Dziennik Ustaw na bieżąco</span>
+        <h1>Bądź na bieżąco <em>z&nbsp;prawem.</em></h1>
+        <p class="lead">ZmiennikPrawny pokazuje nowe ustawy, rozporządzenia i obwieszczenia z Dziennika Ustaw RP zaraz po publikacji. Czytelnie, szybko i za darmo.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://zmiennikprawny.vercel.app/">
+            Otwórz aplikację
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#jak-to-dziala">Jak to działa</a>
+        </div>
+        <ul class="trust">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Dane z oficjalnego API Sejmu RP</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Bez rejestracji</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Działa na telefonie jak aplikacja</li>
+        </ul>
+      </div>
+
+      <div class="mock" aria-label="Podgląd aplikacji ZmiennikPrawny z najnowszymi aktami prawnymi">
+        <div class="mock-top">
+          <span class="b"><img src="logo.png" alt="" width="30" height="30">ZmiennikPrawny</span>
+          <span class="live"><span class="dot"></span><span id="live-label">Najnowsze akty</span></span>
+        </div>
+        <div class="mock-search">
+          <div class="mock-input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Szukaj…</div>
+          <div class="chips"><span class="chip on">Wszystkie</span><span class="chip">Ustawy</span><span class="chip">Rozporządzenia</span><span class="chip">Ogłoszenia</span></div>
+        </div>
+        <ul class="acts" id="acts">
+          <li class="act"><span class="badge">Nowy</span><h3>Rozporządzenie Ministra Finansów w sprawie obniżonych stawek podatku od towarów i usług</h3><p><b>Dz.U. 2026 poz. 699</b> · 28.05.2026</p></li>
+          <li class="act"><span class="badge">Nowy</span><h3>Rozporządzenie Rady Ministrów w sprawie sposobu udzielania dostępu do aplikacji SRPP</h3><p><b>Dz.U. 2026 poz. 701</b> · 28.05.2026</p></li>
+          <li class="act"><h3>Rozporządzenie Ministra Sprawiedliwości zmieniające rozporządzenie w sprawie pobierania przez notariuszy opłat sądowych</h3><p><b>Dz.U. 2026 poz. 295</b> · 10.06.2026</p></li>
+        </ul>
+        <div class="mock-foot" id="mock-foot">Przykładowe dane. W aplikacji lista odświeża się na żywo.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNKCJE -->
+  <section id="funkcje" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="para">§ 1. Funkcje</div>
+        <h2>Wszystko, czego potrzebujesz, żeby nic Ci nie umknęło.</h2>
+        <p>Bez przekopywania się przez ISAP. Otwierasz aplikację i od razu widzisz, co nowego opublikowano.</p>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div>
+          <h3>Nowe akty na bieżąco</h3>
+          <p>Lista aktów z Dziennika Ustaw z ostatnich 30 dni, posortowana od najnowszych. Świeże pozycje mają znaczek „Nowy”.</p>
+        </div>
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+          <h3>Wyszukiwanie z podświetlaniem</h3>
+          <p>Wpisz np. „podatku” albo „pracy”, a pasujące frazy zobaczysz <span class="hl">podświetlone na zielono</span> w tytułach.</p>
+        </div>
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18M6 12h12M10 19h4"/></svg></div>
+          <h3>Filtry według rodzaju</h3>
+          <p>Jednym stuknięciem zawęzisz listę do ustaw, rozporządzeń albo ogłoszeń i obwieszczeń.</p>
+        </div>
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+          <h3>Najważniejsze daty</h3>
+          <p>Pozycja w Dzienniku Ustaw, data publikacji i informacja, ile dni temu akt się ukazał.</p>
+        </div>
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 18v-6M9 15l3 3 3-3"/></svg></div>
+          <h3>Oficjalny PDF jednym kliknięciem</h3>
+          <p>Każdy akt ma bezpośredni link do oficjalnego tekstu w ISAP, więc zawsze sięgasz do źródła.</p>
+        </div>
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div>
+          <h3>Na telefonie jak aplikacja</h3>
+          <p>Dodaj ZmiennikPrawny do ekranu początkowego i otwieraj go jak zwykłą aplikację, na iPhonie i Androidzie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JAK TO DZIAŁA -->
+  <section id="jak-to-dziala">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="para">§ 2. Jak to działa</div>
+        <h2>Trzy kroki. Zero rejestracji.</h2>
+        <p>Aplikacja pobiera dane prosto z oficjalnego API Sejmu RP (ELI), tego samego, z którego korzysta ISAP.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Otwórz aplikację</h3><p>W przeglądarce, na komputerze albo telefonie. Nie musisz zakładać konta ani niczego instalować.</p></div>
+        <div class="step"><h3>Przejrzyj albo wyszukaj</h3><p>Zobacz najnowsze akty albo wpisz temat, który Cię interesuje, i zawęź listę filtrem.</p></div>
+        <div class="step"><h3>Sięgnij do źródła</h3><p>Otwórz szczegóły aktu i pobierz oficjalny PDF z Dziennika Ustaw.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DLA KOGO -->
+  <section id="dla-kogo" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="para">§ 3. Dla kogo</div>
+        <h2>Dla każdego, kto musi wiedzieć, co&nbsp;się zmienia.</h2>
+      </div>
+      <div class="audience">
+        <div class="aud"><h3>Studenci prawa</h3><p>Śledź nowelizacje na bieżąco, zamiast dowiadywać się o nich przed kolokwium.</p></div>
+        <div class="aud"><h3>Prawnicy i kancelarie</h3><p>Szybki przegląd tego, co opublikowano, bez otwierania ISAP kilka razy dziennie.</p></div>
+        <div class="aud"><h3>Księgowi i kadry</h3><p>Wyszukaj „podatku”, „składek” czy „pracy” i od razu zobacz, czy coś się zmienia.</p></div>
+        <div class="aud"><h3>Przedsiębiorcy</h3><p>Sprawdź w minutę, jakie przepisy opublikowano w tym tygodniu.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WKRÓTCE -->
+  <section id="wkrotce">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="para">§ 4. W przygotowaniu</div>
+        <h2>Co dalej w ZmiennikuPrawnym.</h2>
+        <p>Aplikacja cały czas się rozwija. Nad tymi funkcjami pracuję teraz.</p>
+      </div>
+      <div class="soon">
+        <div class="feature"><span class="tag">Wkrótce</span>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></div>
+          <h3>Alerty tematyczne</h3><p>Wybierz tematy, np. podatki albo prawo pracy, i dostawaj powiadomienie, gdy pojawi się nowy akt.</p></div>
+        <div class="feature"><span class="tag">Wkrótce</span>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7"/></svg></div>
+          <h3>Krótkie podsumowania</h3><p>Prostym językiem: czego dotyczy akt i od kiedy obowiązuje. Zawsze z linkiem do oficjalnego tekstu.</p></div>
+        <div class="feature"><span class="tag">Wkrótce</span>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+          <h3>Projekty ustaw</h3><p>Podgląd tego, co dopiero przechodzi przez Sejm, zanim trafi do Dziennika Ustaw.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="para">§ 5. Pytania</div>
+        <h2>Najczęstsze pytania</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Czy ZmiennikPrawny to oficjalny serwis?</summary><p>Nie. To niezależna aplikacja. Dane pochodzą z oficjalnego API Sejmu RP (ELI), ale moc prawną ma wyłącznie tekst opublikowany w Dzienniku Ustaw. Dlatego przy każdym akcie jest link do oficjalnego PDF.</p></details>
+        <details><summary>Ile to kosztuje?</summary><p>Nic. Aplikacja jest darmowa i nie wymaga zakładania konta.</p></details>
+        <details><summary>Skąd pochodzą dane?</summary><p>Z publicznego API Sejmu RP, które udostępnia akty prawne z Dziennika Ustaw (system ELI). To te same dane, które widzisz w ISAP.</p></details>
+        <details><summary>Jak zainstalować aplikację na iPhonie?</summary><p>Otwórz aplikację w Safari, stuknij „Udostępnij” (kwadrat ze strzałką), a potem „Do ekranu początkowego”. Ikona pojawi się obok innych aplikacji.</p></details>
+        <details><summary>Czy aplikacja zbiera moje dane?</summary><p>Nie zakładasz konta i nie podajesz żadnych danych. Strona i aplikacja nie używają ciasteczek ani narzędzi analitycznych. Aplikacja zapisuje tylko Twoje ustawienia, czyli motyw i obserwowane tematy, w pamięci Twojej przeglądarki. Nie trafiają one do nas. Dostawca hostingu, jak każdy serwer, może technicznie zapisywać adresy IP w logach.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final">
+    <div class="wrap">
+      <div class="final-card">
+        <h2>Sprawdź, co dziś zmieniło się w&nbsp;prawie.</h2>
+        <p>Otwórz ZmiennikPrawny i zobacz najnowsze akty z Dziennika Ustaw.</p>
+        <a class="btn btn-primary" href="https://zmiennikprawny.vercel.app/">Otwórz aplikację</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="#top"><img src="logo.png" alt="" width="38" height="38">ZmiennikPrawny</a>
+      <div class="foot-links">
+        <a href="https://zmiennikprawny.vercel.app/">Aplikacja</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://github.com/piowerb/ZmiennikPrawny">GitHub</a>
+      </div>
+    </div>
+    <p class="disclaimer">ZmiennikPrawny nie jest serwisem Sejmu RP ani Rządowego Centrum Legislacji. Informacje w aplikacji mają charakter pomocniczy i nie stanowią porady prawnej. Wiążące są wyłącznie teksty aktów opublikowane w Dzienniku Ustaw RP.</p>
+    <p class="disclaimer" style="margin-top:10px">© <span id="y">2026</span> ZmiennikPrawny · Autor: <a href="https://github.com/piowerb">@piowerb</a></p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+// Na żywo: 3 najnowsze akty z API Sejmu (ELI). Gdy API nie odpowie, zostają przykładowe dane.
+(async()=>{
+  try{
+    const ctrl=new AbortController(); setTimeout(()=>ctrl.abort(),6000);
+    const y=new Date().getFullYear();
+    const r=await fetch('https://api.sejm.gov.pl/eli/acts/DU/'+y+'?limit=500',{signal:ctrl.signal});
+    if(!r.ok) return;
+    const d=await r.json();
+    const items=(d.items||[]).map(a=>({pos:a.pos,year:a.year,title:a.title,date:new Date(a.promulgation||a.publicationDate||a.announcementDate||0)}))
+      .filter(a=>a.title&&!isNaN(a.date))
+      .sort((a,b)=>b.date-a.date||b.pos-a.pos).slice(0,3);
+    if(items.length<3) return;
+    const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const now=Date.now();
+    document.getElementById('acts').innerHTML=items.map(a=>{
+      const isNew=(now-a.date)/864e5<=7;
+      return '<li class="act">'+(isNew?'<span class="badge">Nowy</span>':'')+'<h3>'+esc(a.title)+'</h3><p><b>Dz.U. '+a.year+' poz. '+a.pos+'</b> · '+a.date.toLocaleDateString('pl-PL')+'</p></li>';
+    }).join('');
+    document.getElementById('mock-foot').textContent='Na żywo z API Sejmu RP · '+new Date().toLocaleDateString('pl-PL');
+    document.getElementById('live-label').textContent='Na żywo';
+  }catch(e){}
+})();
+</script>
+</body>
+</html>

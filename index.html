@@ -58,7 +58,8 @@ header{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.88);backdro
 .brand img{width:38px;height:38px;border-radius:11px}
 .nav-links{display:flex;align-items:center;gap:28px;font-size:15px;color:var(--muted)}
 .nav-links a{text-decoration:none}
-.nav-links a:hover{color:var(--green)}
+.nav-links a:not(.btn):hover{color:var(--green)}
+.nav-links a.btn-primary,.nav-links a.btn-primary:hover{color:#fff}
 .nav .btn{min-height:42px;padding:0 18px;font-size:15px}
 .nav .btn{white-space:nowrap}
 @media (max-width:430px){.nav .btn{padding:0 14px;font-size:14px;min-height:40px}.nav .brand{font-size:17px;gap:9px}.nav .brand img{width:34px;height:34px}}

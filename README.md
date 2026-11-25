@@ -45,7 +45,7 @@ ZmiennikPrawny pokazuje nowe ustawy, rozporządzenia i obwieszczenia zaraz po pu
 
 To repozytorium zawiera tylko stronę informacyjną. Sama aplikacja (React + TypeScript, hostowana na Vercel) jest w repozytorium [piowerb/ZmiennikPrawny](https://github.com/piowerb/ZmiennikPrawny).
 
-## ℹ️ Co jest na stronie
+## ✨ Co jest na stronie
 
 - **Podgląd aplikacji na żywo** – ramka w nagłówku pobiera 3 najnowsze akty z API Sejmu; gdy API nie odpowie, pokazuje przykładowe pozycje
 - **§ 1–5** – funkcje, jak to działa, dla kogo, plany rozwoju i FAQ, numerowane jak paragrafy w ustawie
@@ -88,5 +88,7 @@ Wszelkie prawa zastrzeżone. Kod i projekt strony można przeglądać w celach p
 ---
 
 <p align="center">
-  Autor: <a href="https://github.com/piowerb">@piowerb</a> · <b>ZmiennikPrawny – bądź na bieżąco z prawem</b> ⚖️
+  Autor: Piotr Werbowy (<a href="https://github.com/piowerb">@piowerb</a>) · <a href="mailto:kontakt@zmiennikprawny.pl">kontakt@zmiennikprawny.pl</a>
+  <br>
+  <b>ZmiennikPrawny – bądź na bieżąco z prawem</b> ⚖️
 </p>

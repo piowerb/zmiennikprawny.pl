@@ -29,9 +29,10 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"WebSite","@id":"https://zmiennikprawny.pl/#website","url":"https://zmiennikprawny.pl/","name":"ZmiennikPrawny","inLanguage":"pl-PL"},
-{"@type":"WebApplication","name":"ZmiennikPrawny","url":"https://app.zmiennikprawny.pl/","applicationCategory":"ReferenceApplication","operatingSystem":"Web, iOS, Android","inLanguage":"pl-PL","description":"Aplikacja do śledzenia nowych aktów prawnych z Dziennika Ustaw RP zaraz po publikacji, na podstawie oficjalnego API Sejmu RP (ELI).","offers":{"@type":"Offer","price":"0","priceCurrency":"PLN"},"author":{"@type":"Person","name":"Piotr Werbowy","alternateName":"piowerb","url":"https://github.com/piowerb"}},
+{"@type":"WebApplication","name":"ZmiennikPrawny","url":"https://app.zmiennikprawny.pl/","applicationCategory":"ReferenceApplication","operatingSystem":"Web, iOS, Android","inLanguage":"pl-PL","description":"Aplikacja do śledzenia nowych aktów prawnych z Dziennika Ustaw RP zaraz po publikacji, na podstawie oficjalnego API Sejmu RP (ELI).","featureList":["Najnowsze akty z Dziennika Ustaw","Wyszukiwarka i filtry","Akty wchodzące w życie w ciągu 14 dni","Obserwowane tematy","Wyjaśnienia AI prostym językiem","Tryb ciemny i PWA"],"offers":{"@type":"Offer","price":"0","priceCurrency":"PLN"},"author":{"@type":"Person","name":"Piotr Werbowy","alternateName":"piowerb","url":"https://github.com/piowerb"}},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Czy ZmiennikPrawny to oficjalny serwis?","acceptedAnswer":{"@type":"Answer","text":"Nie. To niezależna aplikacja. Dane pochodzą z oficjalnego API Sejmu RP (ELI), ale wiążący jest wyłącznie tekst opublikowany w Dzienniku Ustaw."}},
+{"@type":"Question","name":"Czy wyjaśnienia AI są wiarygodne?","acceptedAnswer":{"@type":"Answer","text":"To pomoc w szybkim zrozumieniu aktu, a nie porada prawna. AI opiera się wyłącznie na oficjalnym tekście aktu i przy każdej zmianie podaje przepis, więc łatwo to sprawdzić. Daty pochodzą bezpośrednio z ISAP, nie z AI. Wiążący jest zawsze tekst w Dzienniku Ustaw."}},
 {"@type":"Question","name":"Ile to kosztuje?","acceptedAnswer":{"@type":"Answer","text":"Aplikacja jest darmowa i nie wymaga zakładania konta."}},
 {"@type":"Question","name":"Jak zainstalować aplikację na iPhonie?","acceptedAnswer":{"@type":"Answer","text":"Otwórz aplikację w Safari, stuknij Udostępnij, a potem Do ekranu początkowego."}}
 ]}
@@ -144,6 +145,31 @@ h2{font-family:var(--serif);font-size:clamp(30px,4vw,42px);line-height:1.12;lett
 .soon .feature{position:relative}
 .tag{position:absolute;top:22px;right:22px;font-size:12px;font-weight:600;color:#7a5b00;background:#fff4d6;border-radius:999px;padding:3px 10px}
 
+/* AI */
+#ai{background:linear-gradient(180deg,#f3f8f5,#fbfaf7);border-bottom:1px solid var(--line)}
+@media (max-width:640px){#ai .btn{width:100%}}
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.ai-badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--green);background:var(--mint);padding:6px 12px;border-radius:999px;margin-bottom:16px}
+.ai-badge svg{width:15px;height:15px}
+.ai-list{list-style:none;display:grid;gap:14px;margin:26px 0 30px}
+.ai-list li{display:flex;gap:12px;align-items:flex-start;font-size:16.5px}
+.ai-list li span.n{flex:none;width:28px;height:28px;border-radius:9px;background:var(--mint);color:var(--green);display:grid;place-items:center}
+.ai-list li span.n svg{width:16px;height:16px}
+.ai-list b{display:block;font-size:16.5px}
+.ai-list small{display:block;color:var(--muted);font-size:15px;line-height:1.5}
+.ai-card{background:#f4faf6;border:1px solid #cfe6da;border-radius:22px;padding:22px;box-shadow:0 30px 60px -30px rgba(0,81,48,.35),0 18px 36px -18px rgba(15,26,20,.14)}
+.ai-card .t{display:flex;align-items:center;gap:8px;font-weight:700;margin-bottom:14px}
+.ai-card .t svg{width:20px;height:20px;color:var(--green)}
+.ai-card .t .beta{margin-left:auto;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--green);background:#fff;border:1px solid #cfe6da;border-radius:999px;padding:2px 9px}
+.ai-card .act-t{font-size:13px;color:var(--muted);margin-bottom:12px}
+.ai-card h4{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#6b756f;margin:14px 0 4px}
+.ai-card p,.ai-card li{font-size:14.5px;line-height:1.5}
+.ai-card ul{padding-left:18px}
+.ai-card li{margin:4px 0}
+.ai-card li::marker{color:var(--green)}
+.ai-card .note{font-size:12px;color:#7f8883;margin-top:14px}
+.ai-card .ask{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid #cfe6da}
+.ai-card .ask span{display:flex;align-items:center;justify-content:center;min-height:40px;border-radius:12px;background:#fff;border:1px solid var(--line);font-size:13.5px;font-weight:600}
 .faq{max-width:760px}
 details{border-bottom:1px solid var(--line);padding:6px 0}
 summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px;font-weight:600;font-size:17px}
@@ -168,7 +194,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
 .disclaimer{font-size:13px;color:#7f8883;max-width:760px}
 
 @media (max-width:960px){
-  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-grid,.ai-grid{grid-template-columns:1fr;gap:40px}
   .features,.soon{grid-template-columns:1fr 1fr}
   .audience{grid-template-columns:1fr 1fr}
 }
@@ -191,6 +217,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
     </a>
     <nav class="nav-links" aria-label="Główna nawigacja">
       <a href="#funkcje">Funkcje</a>
+      <a href="#ai">Wyjaśnienia AI</a>
       <a href="#jak-to-dziala">Jak to działa</a>
       <a href="#dla-kogo">Dla kogo</a>
       <a href="#faq">FAQ</a>
@@ -218,6 +245,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Dane z oficjalnego API Sejmu RP</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Bez rejestracji</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Działa na telefonie jak aplikacja</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Wyjaśnienia AI prostym językiem</li>
         </ul>
       </div>
 
@@ -267,7 +295,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
         <div class="feature">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
           <h3>Najważniejsze daty</h3>
-          <p>Pozycja w Dzienniku Ustaw, data publikacji i informacja, ile dni temu akt się ukazał.</p>
+          <p>Data publikacji i wejścia w życie, a w zakładce „Wkrótce” akty, które zaczną obowiązywać w ciągu 14 dni.</p>
         </div>
         <div class="feature">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 18v-6M9 15l3 3 3-3"/></svg></div>
@@ -283,18 +311,55 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
     </div>
   </section>
 
+  <!-- AI -->
+  <section id="ai">
+    <div class="wrap ai-grid">
+      <div>
+        <div class="para">§ 2. Wyjaśnienia AI</div>
+        <span class="ai-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4M4 17v2M5 18H3"/></svg>Nowość · beta</span>
+        <h2>Akt prawny prostym językiem.</h2>
+        <p class="lead" style="margin-bottom:0">Jedno kliknięcie w szczegółach aktu i AI czyta jego oficjalny tekst, a potem w kilka sekund mówi, czego dotyczy, kogo dotyczy i co zmienia.</p>
+        <ul class="ai-list">
+          <li><span class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Zawsze z przepisem</b><small>Każda zmiana ma odnośnik do artykułu albo paragrafu, więc łatwo ją sprawdzić w źródle.</small></span></li>
+          <li><span class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span><b>Daty prosto z ISAP</b><small>Data publikacji i wejścia w życie nie pochodzi od AI, tylko z oficjalnych danych Sejmu RP.</small></span></li>
+          <li><span class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span><b>Masz pytanie? Zapytaj dalej</b><small>Przycisk otwiera ChatGPT albo Claude z gotowym pytaniem o ten konkretny akt.</small></span></li>
+        </ul>
+        <a class="btn btn-primary" href="https://app.zmiennikprawny.pl/#/DU/2026/1530">
+          Zobacz przykład
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="ai-card" aria-label="Przykładowe wyjaśnienie AI w aplikacji">
+        <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4M4 17v2M5 18H3"/></svg>Wyjaśnienie AI<span class="beta">beta</span></div>
+        <div class="act-t">Dz.U. 2026 poz. 1530 · Rozporządzenie Ministra Cyfryzacji</div>
+        <h4>Czego dotyczy</h4>
+        <p>Rozporządzenie określa szczegółowy wykaz danych telekomunikacyjnych, które muszą być zatrzymywane i przechowywane, oraz wskazuje przedsiębiorców zwolnionych z tego obowiązku.</p>
+        <h4>Kogo dotyczy</h4>
+        <p>Przedsiębiorców telekomunikacyjnych oraz użytkowników końcowych usług telekomunikacyjnych.</p>
+        <h4>Najważniejsze zmiany</h4>
+        <ul>
+          <li>Określono dane niezbędne do identyfikacji użytkowników, urządzeń i lokalizacji w różnych usługach (załącznik).</li>
+          <li>Obowiązek nie dotyczy przedsiębiorców rozpowszechniających programy radiowe i telewizyjne (§ 3).</li>
+          <li>Ustalono zakres danych dla usług satelitarnych (załącznik pkt 4 i 6).</li>
+        </ul>
+        <p class="note">Wygenerowane przez AI na podstawie tekstu aktu. Może zawierać błędy i nie jest poradą prawną.</p>
+        <div class="ask"><span>Zapytaj ChatGPT ↗</span><span>Zapytaj Claude ↗</span></div>
+      </div>
+    </div>
+  </section>
+
   <!-- JAK TO DZIAŁA -->
   <section id="jak-to-dziala">
     <div class="wrap">
       <div class="sec-head">
-        <div class="para">§ 2. Jak to działa</div>
+        <div class="para">§ 3. Jak to działa</div>
         <h2>Trzy kroki. Zero rejestracji.</h2>
         <p>Aplikacja pobiera dane prosto z oficjalnego API Sejmu RP (ELI), tego samego, z którego korzysta ISAP.</p>
       </div>
       <div class="steps">
         <div class="step"><h3>Otwórz aplikację</h3><p>W przeglądarce, na komputerze albo telefonie. Nie musisz zakładać konta ani niczego instalować.</p></div>
         <div class="step"><h3>Przejrzyj albo wyszukaj</h3><p>Zobacz najnowsze akty albo wpisz temat, który Cię interesuje, i zawęź listę filtrem.</p></div>
-        <div class="step"><h3>Sięgnij do źródła</h3><p>Otwórz szczegóły aktu i pobierz oficjalny PDF z Dziennika Ustaw.</p></div>
+        <div class="step"><h3>Zrozum i sięgnij do źródła</h3><p>Otwórz szczegóły aktu, poproś AI o wyjaśnienie prostym językiem i pobierz oficjalny PDF z Dziennika Ustaw.</p></div>
       </div>
     </div>
   </section>
@@ -303,7 +368,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
   <section id="dla-kogo" class="band">
     <div class="wrap">
       <div class="sec-head">
-        <div class="para">§ 3. Dla kogo</div>
+        <div class="para">§ 4. Dla kogo</div>
         <h2>Dla każdego, kto musi wiedzieć, co&nbsp;się zmienia.</h2>
       </div>
       <div class="audience">
@@ -319,17 +384,17 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
   <section id="wkrotce">
     <div class="wrap">
       <div class="sec-head">
-        <div class="para">§ 4. W przygotowaniu</div>
+        <div class="para">§ 5. W przygotowaniu</div>
         <h2>Co dalej w ZmiennikuPrawnym.</h2>
         <p>Aplikacja cały czas się rozwija. Nad tymi funkcjami pracuję teraz.</p>
       </div>
       <div class="soon">
         <div class="feature"><span class="tag">Wkrótce</span>
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></div>
-          <h3>Alerty tematyczne</h3><p>Wybierz tematy, np. podatki albo prawo pracy, i dostawaj powiadomienie, gdy pojawi się nowy akt.</p></div>
+          <h3>Powiadomienia</h3><p>Obserwowane tematy już są w aplikacji. Następny krok to powiadomienie, gdy pojawi się nowy akt z Twojego tematu.</p></div>
         <div class="feature"><span class="tag">Wkrótce</span>
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7"/></svg></div>
-          <h3>Krótkie podsumowania</h3><p>Prostym językiem: czego dotyczy akt i od kiedy obowiązuje. Zawsze z linkiem do oficjalnego tekstu.</p></div>
+          <h3>Pytania do aktu w aplikacji</h3><p>Rozmowa z AI o konkretnym akcie bez wychodzenia z aplikacji. Odpowiedzi zawsze z przepisem i linkiem do źródła.</p></div>
         <div class="feature"><span class="tag">Wkrótce</span>
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
           <h3>Projekty ustaw</h3><p>Podgląd tego, co dopiero przechodzi przez Sejm, zanim trafi do Dziennika Ustaw.</p></div>
@@ -341,15 +406,16 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
   <section id="faq" class="band">
     <div class="wrap">
       <div class="sec-head">
-        <div class="para">§ 5. Pytania</div>
+        <div class="para">§ 6. Pytania</div>
         <h2>Najczęstsze pytania</h2>
       </div>
       <div class="faq">
         <details><summary>Czy ZmiennikPrawny to oficjalny serwis?</summary><p>Nie. To niezależna aplikacja. Dane pochodzą z oficjalnego API Sejmu RP (ELI), ale moc prawną ma wyłącznie tekst opublikowany w Dzienniku Ustaw. Dlatego przy każdym akcie jest link do oficjalnego PDF.</p></details>
         <details><summary>Ile to kosztuje?</summary><p>Nic. Aplikacja jest darmowa i nie wymaga zakładania konta.</p></details>
+        <details><summary>Czy wyjaśnienia AI są wiarygodne?</summary><p>To pomoc w szybkim zrozumieniu aktu, a nie porada prawna. AI opiera się wyłącznie na oficjalnym tekście aktu i przy każdej zmianie podaje przepis, więc łatwo to sprawdzić. Daty pochodzą bezpośrednio z ISAP, nie z AI. Wiążący jest zawsze tekst w Dzienniku Ustaw.</p></details>
         <details><summary>Skąd pochodzą dane?</summary><p>Z publicznego API Sejmu RP, które udostępnia akty prawne z Dziennika Ustaw (system ELI). To te same dane, które widzisz w ISAP.</p></details>
         <details><summary>Jak zainstalować aplikację na iPhonie?</summary><p>Otwórz aplikację w Safari, stuknij „Udostępnij” (kwadrat ze strzałką), a potem „Do ekranu początkowego”. Ikona pojawi się obok innych aplikacji.</p></details>
-        <details><summary>Czy aplikacja zbiera moje dane?</summary><p>Nie zakładasz konta i nie podajesz żadnych danych. Strona i aplikacja nie używają ciasteczek ani narzędzi analitycznych. Aplikacja zapisuje tylko Twoje ustawienia, czyli motyw i obserwowane tematy, w pamięci Twojej przeglądarki. Nie trafiają one do nas. Dostawca hostingu, jak każdy serwer, może technicznie zapisywać adresy IP w logach.</p></details>
+        <details><summary>Czy aplikacja zbiera moje dane?</summary><p>Nie zakładasz konta i nie podajesz żadnych danych. Strona i aplikacja nie używają ciasteczek ani narzędzi analitycznych. Aplikacja zapisuje tylko Twoje ustawienia, czyli motyw i obserwowane tematy, w pamięci Twojej przeglądarki. Wyjaśnienia AI tworzy Cloudflare Workers AI na podstawie publicznego tekstu aktu, bez żadnych Twoich danych. Nie trafiają one do nas. Dostawca hostingu, jak każdy serwer, może technicznie zapisywać adresy IP w logach.</p></details>
       </div>
     </div>
   </section>

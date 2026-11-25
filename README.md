@@ -32,23 +32,28 @@
 </p>
 
 <p align="center">
+  <img src="docs/screenshot-ai.png" alt="Sekcja Wyjaśnienia AI na stronie" width="100%">
+</p>
+
+<p align="center">
   <img src="docs/screenshot-mobile-1.png" alt="Strona na telefonie – nagłówek" width="260">
   &nbsp;&nbsp;
-  <img src="docs/screenshot-mobile-2.png" alt="Strona na telefonie – funkcje" width="260">
+  <img src="docs/screenshot-mobile-2.png" alt="Strona na telefonie – wyjaśnienia AI" width="260">
 </p>
 
 ---
 
 ## 📋 O projekcie
 
-ZmiennikPrawny pokazuje nowe ustawy, rozporządzenia i obwieszczenia zaraz po publikacji w Dzienniku Ustaw. Dane pochodzą z oficjalnego API Sejmu RP (ELI). Aplikacja jest darmowa i nie wymaga zakładania konta.
+ZmiennikPrawny pokazuje nowe ustawy, rozporządzenia i obwieszczenia zaraz po publikacji w Dzienniku Ustaw. Dane pochodzą z oficjalnego API Sejmu RP (ELI). Każdy akt można też wyjaśnić prostym językiem dzięki AI (beta). Aplikacja jest darmowa i nie wymaga zakładania konta.
 
 To repozytorium zawiera tylko stronę informacyjną. Sama aplikacja (React + TypeScript, hostowana na Vercel) jest w repozytorium [piowerb/ZmiennikPrawny](https://github.com/piowerb/ZmiennikPrawny).
 
 ## ℹ️ Co jest na stronie
 
 - **Podgląd aplikacji na żywo** – ramka w nagłówku pobiera 3 najnowsze akty z API Sejmu; gdy API nie odpowie, pokazuje przykładowe pozycje
-- **§ 1–5** – funkcje, jak to działa, dla kogo, plany rozwoju i FAQ, numerowane jak paragrafy w ustawie
+- **§ 1–6** – funkcje, wyjaśnienia AI, jak to działa, dla kogo, plany rozwoju i FAQ, numerowane jak paragrafy w ustawie
+- **§ 2. Wyjaśnienia AI** – opis nowej funkcji z przykładową kartą wygenerowaną przez AI dla prawdziwego aktu (Dz.U. 2026 poz. 1530)
 - **Responsywność** – pełne dopasowanie do telefonów, w tym iPhone'ów z notchem (safe areas)
 - **SEO** – dane strukturalne (WebSite, WebApplication, FAQPage), Open Graph, `sitemap.xml`, `robots.txt`
 - **Prywatność** – zero ciasteczek, zero analityki, zero zewnętrznych skryptów

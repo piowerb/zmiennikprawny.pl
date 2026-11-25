@@ -20,7 +20,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"WebSite","@id":"https://zmiennikprawny.pl/#website","url":"https://zmiennikprawny.pl/","name":"ZmiennikPrawny","inLanguage":"pl-PL"},
-{"@type":"WebApplication","name":"ZmiennikPrawny","url":"https://zmiennikprawny.vercel.app/","applicationCategory":"ReferenceApplication","operatingSystem":"Web, iOS, Android","inLanguage":"pl-PL","description":"Aplikacja do śledzenia nowych aktów prawnych z Dziennika Ustaw RP zaraz po publikacji, na podstawie oficjalnego API Sejmu RP (ELI).","offers":{"@type":"Offer","price":"0","priceCurrency":"PLN"},"author":{"@type":"Person","name":"Piotr Werbowy","alternateName":"piowerb","url":"https://github.com/piowerb"}},
+{"@type":"WebApplication","name":"ZmiennikPrawny","url":"https://app.zmiennikprawny.pl/","applicationCategory":"ReferenceApplication","operatingSystem":"Web, iOS, Android","inLanguage":"pl-PL","description":"Aplikacja do śledzenia nowych aktów prawnych z Dziennika Ustaw RP zaraz po publikacji, na podstawie oficjalnego API Sejmu RP (ELI).","offers":{"@type":"Offer","price":"0","priceCurrency":"PLN"},"author":{"@type":"Person","name":"Piotr Werbowy","alternateName":"piowerb","url":"https://github.com/piowerb"}},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Czy ZmiennikPrawny to oficjalny serwis?","acceptedAnswer":{"@type":"Answer","text":"Nie. To niezależna aplikacja. Dane pochodzą z oficjalnego API Sejmu RP (ELI), ale wiążący jest wyłącznie tekst opublikowany w Dzienniku Ustaw."}},
 {"@type":"Question","name":"Ile to kosztuje?","acceptedAnswer":{"@type":"Answer","text":"Aplikacja jest darmowa i nie wymaga zakładania konta."}},
@@ -185,7 +185,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
       <a href="#jak-to-dziala">Jak to działa</a>
       <a href="#dla-kogo">Dla kogo</a>
       <a href="#faq">FAQ</a>
-      <a class="btn btn-primary" href="https://zmiennikprawny.vercel.app/">Otwórz aplikację</a>
+      <a class="btn btn-primary" href="https://app.zmiennikprawny.pl/">Otwórz aplikację</a>
     </nav>
   </div>
 </header>
@@ -199,7 +199,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
         <h1>Bądź na bieżąco <em>z&nbsp;prawem.</em></h1>
         <p class="lead">ZmiennikPrawny pokazuje nowe ustawy, rozporządzenia i obwieszczenia z Dziennika Ustaw RP zaraz po publikacji. Czytelnie, szybko i za darmo.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="https://zmiennikprawny.vercel.app/">
+          <a class="btn btn-primary" href="https://app.zmiennikprawny.pl/">
             Otwórz aplikację
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
@@ -219,7 +219,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
         </div>
         <div class="mock-search">
           <div class="mock-input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Szukaj…</div>
-          <div class="chips"><span class="chip on">Wszystkie</span><span class="chip">Ustawy</span><span class="chip">Rozporządzenia</span><span class="chip">Ogłoszenia</span></div>
+          <div class="chips"><span class="chip on">Wszystkie</span><span class="chip">Ustawy</span><span class="chip">Rozporządzenia</span><span class="chip">Obwieszczenia</span></div>
         </div>
         <ul class="acts" id="acts">
           <li class="act"><span class="badge">Nowy</span><h3>Rozporządzenie Ministra Finansów w sprawie obniżonych stawek podatku od towarów i usług</h3><p><b>Dz.U. 2026 poz. 699</b> · 28.05.2026</p></li>
@@ -351,7 +351,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
       <div class="final-card">
         <h2>Sprawdź, co dziś zmieniło się w&nbsp;prawie.</h2>
         <p>Otwórz ZmiennikPrawny i zobacz najnowsze akty z Dziennika Ustaw.</p>
-        <a class="btn btn-primary" href="https://zmiennikprawny.vercel.app/">Otwórz aplikację</a>
+        <a class="btn btn-primary" href="https://app.zmiennikprawny.pl/">Otwórz aplikację</a>
       </div>
     </div>
   </section>
@@ -362,7 +362,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
     <div class="foot">
       <a class="brand" href="#top"><img src="logo.png" alt="" width="38" height="38">ZmiennikPrawny</a>
       <div class="foot-links">
-        <a href="https://zmiennikprawny.vercel.app/">Aplikacja</a>
+        <a href="https://app.zmiennikprawny.pl/">Aplikacja</a>
         <a href="#faq">FAQ</a>
         <a href="https://github.com/piowerb/ZmiennikPrawny">GitHub</a>
       </div>
@@ -378,8 +378,8 @@ document.getElementById('y').textContent=new Date().getFullYear();
 (async()=>{
   try{
     const ctrl=new AbortController(); setTimeout(()=>ctrl.abort(),6000);
-    const y=new Date().getFullYear();
-    const r=await fetch('https://api.sejm.gov.pl/eli/acts/DU/'+y+'?limit=500',{signal:ctrl.signal});
+    const from=new Date(Date.now()-14*864e5).toISOString().slice(0,10);
+    const r=await fetch('https://api.sejm.gov.pl/eli/acts/search?publisher=DU&pubDateFrom='+from+'&limit=100',{signal:ctrl.signal});
     if(!r.ok) return;
     const d=await r.json();
     const items=(d.items||[]).map(a=>({pos:a.pos,year:a.year,title:a.title,date:new Date(a.promulgation||a.publicationDate||a.announcementDate||0)}))

@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://zmiennikprawny.pl"><b>Strona</b></a> ·
-  <a href="https://zmiennikprawny.vercel.app"><b>Aplikacja</b></a> ·
+  <a href="https://app.zmiennikprawny.pl"><b>Aplikacja</b></a> ·
   <a href="https://github.com/piowerb/ZmiennikPrawny"><b>Kod aplikacji</b></a>
 </p>
 

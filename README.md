@@ -21,7 +21,7 @@
   <img alt="CSS" src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=css&logoColor=white">
   <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black">
   <br>
-  <img alt="Dane: API Sejmu RP" src="https://img.shields.io/badge/dane-API_Sejmu_RP_(ELI)-005130?style=flat-square">
+  <img alt="Dane: API Sejmu RP" src="https://img.shields.io/badge/dane-API_Sejmu_RP-005130?style=flat-square">
   <img alt="Bez ciasteczek" src="https://img.shields.io/badge/ciasteczka-brak-005130?style=flat-square">
   <img alt="Ostatni commit" src="https://img.shields.io/github/last-commit/piowerb/zmiennikprawny.pl?style=flat-square&label=ostatnia%20zmiana">
   <img alt="Licencja" src="https://img.shields.io/badge/licencja-wszelkie%20prawa%20zastrze%C5%BCone-lightgrey?style=flat-square">
@@ -45,18 +45,20 @@
 
 ## 📋 O projekcie
 
-ZmiennikPrawny pokazuje nowe ustawy, rozporządzenia i obwieszczenia zaraz po publikacji w Dzienniku Ustaw. Dane pochodzą z oficjalnego API Sejmu RP (ELI). Każdy akt można też wyjaśnić prostym językiem dzięki AI (beta). Aplikacja jest darmowa i nie wymaga zakładania konta.
+ZmiennikPrawny pokazuje nowe ustawy, rozporządzenia i obwieszczenia zaraz po publikacji w Dzienniku Ustaw, a także projekty ustaw, które dopiero przechodzą przez Sejm, Senat i trafiają do Prezydenta. Dane pochodzą z oficjalnego API Sejmu RP. Każdy akt można też wyjaśnić prostym językiem dzięki AI (beta). Aplikacja jest darmowa i nie wymaga zakładania konta.
 
 To repozytorium zawiera tylko stronę informacyjną. Sama aplikacja (React + TypeScript, hostowana na Vercel) jest w repozytorium [piowerb/ZmiennikPrawny](https://github.com/piowerb/ZmiennikPrawny).
 
 ## ℹ️ Co jest na stronie
 
 - **Podgląd aplikacji na żywo** – ramka w nagłówku pobiera 3 najnowsze akty z API Sejmu; gdy API nie odpowie, pokazuje przykładowe pozycje
-- **§ 1–6** – funkcje, wyjaśnienia AI, jak to działa, dla kogo, plany rozwoju i FAQ, numerowane jak paragrafy w ustawie
+- **§ 1–6** – funkcje, wyjaśnienia AI, jak to działa, dla kogo, nowości i plany rozwoju (w tym projekty ustaw) oraz FAQ, numerowane jak paragrafy w ustawie
 - **§ 2. Wyjaśnienia AI** – opis nowej funkcji z przykładową kartą wygenerowaną przez AI dla prawdziwego aktu (Dz.U. 2026 poz. 1530)
 - **Responsywność** – pełne dopasowanie do telefonów, w tym iPhone'ów z notchem (safe areas)
-- **SEO** – dane strukturalne (WebSite, WebApplication, FAQPage), Open Graph, `sitemap.xml`, `robots.txt`
-- **Prywatność** – zero ciasteczek, zero analityki, zero zewnętrznych skryptów
+- **SEO** – dane strukturalne (WebSite, Organization, WebApplication, FAQPage), Open Graph, `sitemap.xml`, `robots.txt`
+- **Stopka** – kontakt, link do strony firmowej na LinkedIn i do kodu na GitHubie
+- **Prywatność** – zero ciasteczek; jedyny zewnętrzny skrypt to anonimowe statystyki odwiedzin Cloudflare Web Analytics (bez ciasteczek i bez identyfikowania użytkownika)
+- **Dostępność** – kontrast tekstu i kolejność nagłówków zgodne z WCAG (Lighthouse)
 
 ## 🛠 Technologia
 
@@ -65,17 +67,20 @@ To repozytorium zawiera tylko stronę informacyjną. Sama aplikacja (React + Typ
 | Strona | jeden statyczny plik `index.html` z wbudowanym CSS i JS |
 | Biblioteki | brak – czysty HTML, CSS i JavaScript |
 | Czcionki | systemowe (bez Google Fonts, więc bez przesyłania danych do Google) |
+| Statystyki | Cloudflare Web Analytics (bez ciasteczek) |
 | Hosting | GitHub Pages z własną domeną (`CNAME`) |
-| Dane | [API Sejmu RP – ELI](https://api.sejm.gov.pl/eli_pl.html) |
+| Dane | [API Sejmu RP](https://api.sejm.gov.pl/) – akty (ELI) i projekty ustaw |
 
 ## 📁 Struktura
 
 ```
 index.html            strona główna
 logo.png              logo
-favicon-48.png        ikona karty przeglądarki
+favicon.ico           ikona karty przeglądarki
+favicon-48.png        ikona karty przeglądarki (PNG)
 apple-touch-icon.png  ikona na ekran główny iPhone'a
 og-image.png          obrazek do podglądu linku w social media
+404.html              strona błędu 404
 robots.txt            ustawienia dla wyszukiwarek
 sitemap.xml           mapa strony
 CNAME                 domena zmiennikprawny.pl

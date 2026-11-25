@@ -29,7 +29,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"WebSite","@id":"https://zmiennikprawny.pl/#website","url":"https://zmiennikprawny.pl/","name":"ZmiennikPrawny","inLanguage":"pl-PL"},
-{"@type":"WebApplication","name":"ZmiennikPrawny","url":"https://app.zmiennikprawny.pl/","applicationCategory":"ReferenceApplication","operatingSystem":"Web, iOS, Android","inLanguage":"pl-PL","description":"Aplikacja do śledzenia nowych aktów prawnych z Dziennika Ustaw RP zaraz po publikacji, na podstawie oficjalnego API Sejmu RP (ELI).","featureList":["Najnowsze akty z Dziennika Ustaw","Wyszukiwarka i filtry","Akty wchodzące w życie w ciągu 14 dni","Obserwowane tematy","Wyjaśnienia AI prostym językiem","Tryb ciemny i PWA"],"offers":{"@type":"Offer","price":"0","priceCurrency":"PLN"},"author":{"@type":"Person","name":"Piotr Werbowy","alternateName":"piowerb","url":"https://github.com/piowerb"}},
+{"@type":"WebApplication","name":"ZmiennikPrawny","url":"https://app.zmiennikprawny.pl/","applicationCategory":"ReferenceApplication","operatingSystem":"Web, iOS, Android","inLanguage":"pl-PL","description":"Aplikacja do śledzenia nowych aktów prawnych z Dziennika Ustaw RP zaraz po publikacji, na podstawie oficjalnego API Sejmu RP (ELI).","featureList":["Najnowsze akty z Dziennika Ustaw","Wyszukiwarka i filtry","Akty wchodzące w życie w ciągu 14 dni","Obserwowane tematy","Wyjaśnienia AI prostym językiem","Tryb ciemny i PWA"],"offers":{"@type":"Offer","price":"0","priceCurrency":"PLN"},"sameAs":["https://www.linkedin.com/company/zmiennikprawny-pl/","https://github.com/piowerb/ZmiennikPrawny"],"author":{"@type":"Person","name":"Piotr Werbowy","alternateName":"piowerb","url":"https://github.com/piowerb"}},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Czy ZmiennikPrawny to oficjalny serwis?","acceptedAnswer":{"@type":"Answer","text":"Nie. To niezależna aplikacja. Dane pochodzą z oficjalnego API Sejmu RP (ELI), ale wiążący jest wyłącznie tekst opublikowany w Dzienniku Ustaw."}},
 {"@type":"Question","name":"Czy wyjaśnienia AI są wiarygodne?","acceptedAnswer":{"@type":"Answer","text":"To pomoc w szybkim zrozumieniu aktu, a nie porada prawna. AI opiera się wyłącznie na oficjalnym tekście aktu i przy każdej zmianie podaje przepis, więc łatwo to sprawdzić. Daty pochodzą bezpośrednio z ISAP, nie z AI. Wiążący jest zawsze tekst w Dzienniku Ustaw."}},
@@ -191,6 +191,8 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
 .foot a{text-decoration:none}
 .foot a:hover{color:var(--green)}
 .foot-links{display:flex;gap:20px;flex-wrap:wrap}
+.foot-links .soc{display:inline-flex;align-items:center;gap:7px}
+.foot-links .soc svg{width:16px;height:16px;flex:none}
 .disclaimer{font-size:13px;color:#7f8883;max-width:760px}
 
 @media (max-width:960px){
@@ -439,7 +441,8 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
       <div class="foot-links">
         <a href="https://app.zmiennikprawny.pl/">Aplikacja</a>
         <a href="#faq">FAQ</a>
-        <a href="https://github.com/piowerb/ZmiennikPrawny">GitHub</a>
+        <a href="https://www.linkedin.com/company/zmiennikprawny-pl/" target="_blank" rel="noopener" class="soc"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+        <a href="https://github.com/piowerb/ZmiennikPrawny" target="_blank" rel="noopener" class="soc"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4 18.3 4.3 18.3 4.3c.6 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>GitHub</a>
       </div>
     </div>
     <p class="disclaimer">ZmiennikPrawny nie jest serwisem Sejmu RP ani Rządowego Centrum Legislacji. Informacje w aplikacji mają charakter pomocniczy i nie stanowią porady prawnej. Wiążące są wyłącznie teksty aktów opublikowane w Dzienniku Ustaw RP.</p>

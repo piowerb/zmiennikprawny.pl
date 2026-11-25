@@ -31,7 +31,7 @@
 {"@context":"https://schema.org","@graph":[
 {"@type":"WebSite","@id":"https://zmiennikprawny.pl/#website","url":"https://zmiennikprawny.pl/","name":"ZmiennikPrawny","alternateName":["Zmiennik Prawny","zmiennikprawny.pl"],"inLanguage":"pl-PL","publisher":{"@id":"https://zmiennikprawny.pl/#organization"}},
 {"@type":"Organization","@id":"https://zmiennikprawny.pl/#organization","name":"ZmiennikPrawny","url":"https://zmiennikprawny.pl/","logo":{"@type":"ImageObject","url":"https://zmiennikprawny.pl/logo.png","width":192,"height":192},"email":"kontakt@zmiennikprawny.pl","founder":{"@type":"Person","name":"Piotr Werbowy"},"sameAs":["https://www.linkedin.com/company/zmiennikprawny-pl/","https://github.com/piowerb/ZmiennikPrawny"]},
-{"@type":"WebApplication","name":"ZmiennikPrawny","url":"https://app.zmiennikprawny.pl/","applicationCategory":"ReferenceApplication","operatingSystem":"Web, iOS, Android","inLanguage":"pl-PL","description":"Aplikacja do śledzenia nowych aktów prawnych z Dziennika Ustaw RP zaraz po publikacji, na podstawie oficjalnego API Sejmu RP (ELI).","featureList":["Najnowsze akty z Dziennika Ustaw","Wyszukiwarka i filtry","Akty wchodzące w życie w ciągu 14 dni","Obserwowane tematy","Wyjaśnienia AI prostym językiem","Tryb ciemny i PWA"],"offers":{"@type":"Offer","price":"0","priceCurrency":"PLN"},"sameAs":["https://www.linkedin.com/company/zmiennikprawny-pl/","https://github.com/piowerb/ZmiennikPrawny"],"author":{"@type":"Person","name":"Piotr Werbowy","alternateName":"piowerb","url":"https://github.com/piowerb"}},
+{"@type":"WebApplication","name":"ZmiennikPrawny","url":"https://app.zmiennikprawny.pl/","applicationCategory":"ReferenceApplication","operatingSystem":"Web, iOS, Android","inLanguage":"pl-PL","description":"Aplikacja do śledzenia nowych aktów prawnych z Dziennika Ustaw RP zaraz po publikacji, na podstawie oficjalnego API Sejmu RP (ELI).","featureList":["Najnowsze akty z Dziennika Ustaw","Wyszukiwarka i filtry","Akty wchodzące w życie w ciągu 14 dni","Obserwowane tematy","Wyjaśnienia AI prostym językiem","Projekty ustaw w toku prac (Sejm, Senat, Prezydent)","Tryb ciemny i PWA"],"offers":{"@type":"Offer","price":"0","priceCurrency":"PLN"},"sameAs":["https://www.linkedin.com/company/zmiennikprawny-pl/","https://github.com/piowerb/ZmiennikPrawny"],"author":{"@type":"Person","name":"Piotr Werbowy","alternateName":"piowerb","url":"https://github.com/piowerb"}},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Czy ZmiennikPrawny to oficjalny serwis?","acceptedAnswer":{"@type":"Answer","text":"Nie. To niezależna aplikacja. Dane pochodzą z oficjalnego API Sejmu RP (ELI), ale wiążący jest wyłącznie tekst opublikowany w Dzienniku Ustaw."}},
 {"@type":"Question","name":"Czy wyjaśnienia AI są wiarygodne?","acceptedAnswer":{"@type":"Answer","text":"To pomoc w szybkim zrozumieniu aktu, a nie porada prawna. AI opiera się wyłącznie na oficjalnym tekście aktu i przy każdej zmianie podaje przepis, więc łatwo to sprawdzić. Daty pochodzą bezpośrednio z ISAP, nie z AI. Wiążący jest zawsze tekst w Dzienniku Ustaw."}},
@@ -146,6 +146,7 @@ h2{font-family:var(--serif);font-size:clamp(30px,4vw,42px);line-height:1.12;lett
 .soon{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .soon .feature{position:relative}
 .tag{position:absolute;top:22px;right:22px;font-size:12px;font-weight:600;color:#7a5b00;background:#fff4d6;border-radius:999px;padding:3px 10px}
+.tag.new{color:#005130;background:#e6f4ed}
 
 /* AI */
 #ai{background:linear-gradient(180deg,#f3f8f5,#fbfaf7);border-bottom:1px solid var(--line)}
@@ -390,7 +391,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
       <div class="sec-head">
         <div class="para">§ 5. W przygotowaniu</div>
         <h2>Co dalej w ZmiennikuPrawnym.</h2>
-        <p>Aplikacja cały czas się rozwija. Nad tymi funkcjami pracuję teraz.</p>
+        <p>Aplikacja cały czas się rozwija. Oto najnowsza funkcja i to, nad czym pracuję teraz.</p>
       </div>
       <div class="soon">
         <div class="feature"><span class="tag">Wkrótce</span>
@@ -399,9 +400,9 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
         <div class="feature"><span class="tag">Wkrótce</span>
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7"/></svg></div>
           <h3>Pytania do aktu w aplikacji</h3><p>Rozmowa z AI o konkretnym akcie bez wychodzenia z aplikacji. Odpowiedzi zawsze z przepisem i linkiem do źródła.</p></div>
-        <div class="feature"><span class="tag">Wkrótce</span>
+        <div class="feature"><span class="tag new">Nowość</span>
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
-          <h3>Projekty ustaw</h3><p>Podgląd tego, co dopiero przechodzi przez Sejm, zanim trafi do Dziennika Ustaw.</p></div>
+          <h3>Projekty ustaw</h3><p>Już w aplikacji: co jest w Sejmie, w Senacie i u Prezydenta, zanim trafi do Dziennika Ustaw. Z przebiegiem prac i opisem Kancelarii Sejmu.</p></div>
       </div>
     </div>
   </section>
@@ -419,7 +420,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 calc(36px + env(safe-area
         <details><summary>Czy wyjaśnienia AI są wiarygodne?</summary><p>To pomoc w szybkim zrozumieniu aktu, a nie porada prawna. AI opiera się wyłącznie na oficjalnym tekście aktu i przy każdej zmianie podaje przepis, więc łatwo to sprawdzić. Daty pochodzą bezpośrednio z ISAP, nie z AI. Wiążący jest zawsze tekst w Dzienniku Ustaw.</p></details>
         <details><summary>Skąd pochodzą dane?</summary><p>Z publicznego API Sejmu RP, które udostępnia akty prawne z Dziennika Ustaw (system ELI). To te same dane, które widzisz w ISAP.</p></details>
         <details><summary>Jak zainstalować aplikację na iPhonie?</summary><p>Otwórz aplikację w Safari, stuknij „Udostępnij” (kwadrat ze strzałką), a potem „Do ekranu początkowego”. Ikona pojawi się obok innych aplikacji.</p></details>
-        <details><summary>Czy aplikacja zbiera moje dane?</summary><p>Nie zakładasz konta i nie podajesz żadnych danych. Strona i aplikacja nie używają ciasteczek ani narzędzi analitycznych. Aplikacja zapisuje tylko Twoje ustawienia, czyli motyw i obserwowane tematy, w pamięci Twojej przeglądarki. Wyjaśnienia AI tworzy Cloudflare Workers AI na podstawie publicznego tekstu aktu, bez żadnych Twoich danych. Nie trafiają one do nas. Dostawca hostingu, jak każdy serwer, może technicznie zapisywać adresy IP w logach.</p></details>
+        <details><summary>Czy aplikacja zbiera moje dane?</summary><p>Nie zakładasz konta i nie podajesz żadnych danych. Strona i aplikacja nie używają ciasteczek. Liczymy tylko anonimowe statystyki odwiedzin (Cloudflare Web Analytics) – bez ciasteczek i bez identyfikowania Cię. Aplikacja zapisuje tylko Twoje ustawienia, czyli motyw i obserwowane tematy, w pamięci Twojej przeglądarki. Wyjaśnienia AI tworzy Cloudflare Workers AI na podstawie publicznego tekstu aktu, bez żadnych Twoich danych. Nie trafiają one do nas. Dostawca hostingu, jak każdy serwer, może technicznie zapisywać adresy IP w logach.</p></details>
       </div>
     </div>
   </section>
@@ -477,5 +478,6 @@ document.getElementById('y').textContent=new Date().getFullYear();
   }catch(e){}
 })();
 </script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9d3e7b7c083f46aa83c56300adee81f2"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
